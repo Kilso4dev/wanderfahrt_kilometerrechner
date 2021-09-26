@@ -1,11 +1,6 @@
-from .window import create_window
+from .window import WindowApp
 from .mosel_km import main
 from .rowing_data import RowingData, rowing_data_from_dict
-
-
-app = create_window()
-app.mainloop() 
-
 
 data = RowingData()
 data.add_person('Paul Seydel')
@@ -28,3 +23,5 @@ with open('./out.json', 'r') as f:
 
 #mosel_km.main()
     
+app = WindowApp()
+app.mainloop() 

@@ -29,6 +29,8 @@ class Day:
             del self.persons_incl[name]
         except KeyError:
             pass
+    def __str__(self):
+        return f'{{ km: {self.km}\tdescription: {self.descr}\tsection: {self.section_ind}\tpersons rowing: {self.persons_incl}}}'
 
     # ----------------------------------- Serialization ----------------------------------- 
     def to_dict(self) -> dict:
@@ -132,6 +134,18 @@ class RowingData:
     def get_all_sections(self) -> list[int]:
         return self.sections
 
+    def __str__(self):
+        res = '\ndays:'
+        for cday in self.person_days:
+            res += f'\t{cday}\n'
+        res += 'Sections: '
+        for csection in self.sections:
+            res += f'\t{csection}, '
+        res += '\npersons: '
+        for cpers in self.persons:
+            res += f'{cpers}, '
+        res += '\n'
+        return res
     
     # ----------------------------------- Serialization ----------------------------------- 
     def to_dict(self) -> dict:
