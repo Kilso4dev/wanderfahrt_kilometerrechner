@@ -5,6 +5,7 @@ LOC_TEXT: dict[str, dict[str, str]] = {
         'new_section': 'Neuer Abschnitt',
         'section': 'Abschnitt',
         'calc_km': 'Kilometer auswerten',
+        'test': 'Test',
     },
     'en': {
         'title': 'KmCalc - kilometer calculator for tours',
@@ -12,6 +13,7 @@ LOC_TEXT: dict[str, dict[str, str]] = {
         'new_section': 'New section',
         'section': 'Section',
         'calc_km': 'analyze kilometers',
+        'test': 'Test',
     }
 }
 
