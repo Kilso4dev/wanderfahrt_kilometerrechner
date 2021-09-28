@@ -4,6 +4,8 @@ from .rowing_data import RowingData, rowing_data_from_dict
 
 data = RowingData()
 data.add_person('Paul Seydel')
+data.add_person('Nirina Beilfuß')
+data.add_person('Tim Czemper')
 
 sec1 = data.append_section(3)
 data.insert_day(47.23, section_index=sec1)

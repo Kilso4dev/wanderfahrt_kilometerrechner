@@ -6,6 +6,9 @@ LOC_TEXT: dict[str, dict[str, str]] = {
         'section': 'Abschnitt',
         'calc_km': 'Kilometer auswerten',
         'test': 'Test',
+
+        'sect_id': 'Abschnitt ID',
+        'sect_nrow': 'nicht rudernd',
     },
     'en': {
         'title': 'KmCalc - kilometer calculator for tours',
@@ -14,10 +17,13 @@ LOC_TEXT: dict[str, dict[str, str]] = {
         'section': 'Section',
         'calc_km': 'analyze kilometers',
         'test': 'Test',
+
+        'sect_id': 'Section',
+        'sect_nrow': 'not rowing',
     }
 }
 
-DEFAULT_LOC: str = 'de'
+DEFAULT_LOC: str = 'en'
 
 locale = DEFAULT_LOC
 
