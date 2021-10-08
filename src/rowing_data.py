@@ -89,7 +89,7 @@ class RowingData:
             if cday.section_ind > abs_index:
                 cday.section_ind += 1
             if cday.section_ind == -1:
-                cday.section_ind = abs_index
+                cday.section_ind = abs_index+1
 
         return abs_index
 
@@ -117,6 +117,9 @@ class RowingData:
             for cperson in self.persons:
                 persons_init_state[cperson] = True
         day_index = len(self.persons)-1 if day_index == -1 else day_index
+        day_index = 0 if day_index == -1 else day_index
+
+        print(f'day_index: {day_index}')
 
         self.person_days.insert(day_index, Day(persons_init_state, km, section_index))
         return day_index
