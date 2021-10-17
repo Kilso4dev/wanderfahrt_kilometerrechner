@@ -1,5 +1,5 @@
-from .window import WindowApp
-from .mosel_km import main
+#from .window import WindowApp
+from .km_calc import main
 from .rowing_data import RowingData, rowing_data_from_dict
 
 data = RowingData()
@@ -13,17 +13,18 @@ data.insert_day(23.1)
 sec1 = data.append_section(1)
 
 
-with open('./out.json', 'w') as f:
-    import json
-    f.write(json.dumps(data.to_dict()))
+#with open('./out.json', 'w') as f:
+#    import json
+#    f.write(json.dumps(data.to_dict()))
  
-with open('./out.json', 'r') as f:
-    import json
-    data = rowing_data_from_dict(json.loads(f.read()))
-    print('Data: ', data)
+#with open('./out.json', 'r') as f:
+#    import json
+#    data = rowing_data_from_dict(json.loads(f.read()))
+#    print('Data: ', data)
 
 
 #mosel_km.main()
-    
-app = WindowApp()
-app.mainloop() 
+ 
+tkinter layout
+#app = WindowApp()
+#app.mainloop() 

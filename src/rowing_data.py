@@ -5,6 +5,18 @@ import re
 HEADER_RE = re.compile(r'^--([0-9]+),([0-9]+)$')
 LINE_RE = re.compile(r'^([0-9]+\.[0-9]*|[0-9]*\.[0-9]+|[0-9]+)$')
 
+
+def calc_km_reduced(km_days: list[float], persons_all: int, persons_rowing: int):
+    #def a(acc, c):
+    #    print(f'c: {c} rounded c: {round(c)}')
+    #    return acc+round(c)
+
+    km_all = ft.reduce(lambda acc, c: acc+round(c), km_days, 0)
+    #km_all = ft.reduce(a, km_days, 0)
+    #print(f'km_all: {km_all}')
+    km_reduced = round((persons_rowing/persons_all) * km_all)
+    return km_reduced
+
 class Day:
     km: float = 0
     descr: str = ''
@@ -20,10 +32,8 @@ class Day:
             self.descr = descr
 
         self.persons_incl = person_init_state.copy()
-
     def set_person_rowing(self, name: str, rowing: bool):
         self.persons_incl[name] = rowing
-
     def remove_person(self, name: str):
         try:
             del self.persons_incl[name]
@@ -61,7 +71,6 @@ class RowingData:
             self.sections = sections
         if persons is not None:
             self.persons = persons
-
 
 
     # ----------------------------------- Persons ----------------------------------- 
@@ -150,6 +159,26 @@ class RowingData:
         res += '\n'
         return res
     
+    def calculate(self) -> dict[str, float]:
+        def sort_days(acc: dict[int, list[Day]], cday: Day) -> dict[int, list[Day]]:
+            if acc.get(cday.section_ind) is None:
+                acc[cday.section_ind] = []
+
+            acc[cday.section_ind].append(cday)
+            return acc
+
+        section_days: dict[int, list[Day]] = ft.reduce(sort_days, self.person_days, {})
+        res: dict[str, list[Day]] = {}
+        for cind in section_days:
+            days: list[Day] = section_days[cind]
+            if len(days) > 0:
+                persons = days[0].persons_incl
+                sect_res_reduced: float = calc_km_reduced(list(map(lambda c: c.km, days)), )
+
+
+
+        return res
+
     # ----------------------------------- Serialization ----------------------------------- 
     def to_dict(self) -> dict:
         return {
